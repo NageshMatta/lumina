@@ -1,0 +1,416 @@
+/* Lumina Sidebar Styles - Light Theme */
+
+#lumina-sidebar {
+  --lm-primary: #f59e0b;
+  --lm-primary-dark: #d97706;
+  --lm-primary-light: #fef3c7;
+  --lm-accent: #8b5cf6;
+  --lm-bg: #fffbeb;
+  --lm-bg-secondary: #fef9e7;
+  --lm-text: #1c1917;
+  --lm-text-muted: #78716c;
+  --lm-border: #fde68a;
+  --lm-user-bubble: #f59e0b;
+  --lm-assistant-bubble: #ffffff;
+  --lm-shadow: 0 25px 50px -12px rgba(245, 158, 11, 0.25);
+  --lm-radius: 20px;
+  --lm-radius-sm: 14px;
+  
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  z-index: 2147483647;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--lm-shadow);
+}
+
+#lumina-sidebar.lm-open {
+  right: 0;
+}
+
+#lumina-sidebar * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.lm-sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--lm-bg);
+  border-left: 1px solid var(--lm-border);
+}
+
+/* Header */
+.lm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, var(--lm-primary) 0%, var(--lm-primary-dark) 100%);
+  color: white;
+}
+
+.lm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lm-logo {
+  font-size: 26px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.lm-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.lm-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.lm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+/* Context Banner */
+.lm-context-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
+  border-bottom: 1px solid var(--lm-border);
+  font-size: 12px;
+}
+
+.lm-context-label {
+  color: #92400e;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lm-context-text {
+  color: #78350f;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.lm-context-clear {
+  background: none;
+  border: none;
+  color: #92400e;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.lm-context-clear:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Messages Area */
+.lm-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--lm-bg-secondary);
+}
+
+.lm-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lm-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lm-messages::-webkit-scrollbar-thumb {
+  background: var(--lm-border);
+  border-radius: 3px;
+}
+
+.lm-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--lm-primary);
+}
+
+/* Welcome Message */
+.lm-welcome {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.lm-welcome-emoji {
+  font-size: 56px;
+  margin-bottom: 16px;
+  animation: lm-glow 2s ease-in-out infinite;
+}
+
+@keyframes lm-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4)); }
+  50% { filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.8)); }
+}
+
+.lm-welcome-text {
+  color: var(--lm-text);
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.lm-welcome-hint {
+  background: white;
+  padding: 14px 18px;
+  border-radius: var(--lm-radius-sm);
+  font-size: 12px;
+  color: var(--lm-text-muted);
+  border: 2px dashed var(--lm-border);
+}
+
+/* Message Bubbles */
+.lm-message {
+  display: flex;
+  gap: 10px;
+  max-width: 95%;
+  animation: lm-fadeIn 0.3s ease;
+}
+
+@keyframes lm-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lm-message-user {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.lm-message-assistant {
+  align-self: flex-start;
+}
+
+.lm-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lm-primary) 0%, var(--lm-primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.lm-bubble {
+  padding: 14px 18px;
+  border-radius: var(--lm-radius);
+  max-width: calc(100% - 46px);
+  word-wrap: break-word;
+}
+
+.lm-message-user .lm-bubble {
+  background: linear-gradient(135deg, var(--lm-primary) 0%, var(--lm-primary-dark) 100%);
+  color: white;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+.lm-message-assistant .lm-bubble {
+  background: white;
+  color: var(--lm-text);
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--lm-border);
+}
+
+.lm-bubble.lm-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Typing Indicator */
+.lm-typing-dots {
+  display: flex;
+  gap: 5px;
+  padding: 4px 0;
+}
+
+.lm-typing-dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--lm-primary);
+  border-radius: 50%;
+  animation: lm-bounce 1.4s infinite ease-in-out both;
+}
+
+.lm-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.lm-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes lm-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Input Area */
+.lm-input-area {
+  padding: 16px;
+  background: var(--lm-bg);
+  border-top: 1px solid var(--lm-border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+#lm-input {
+  flex: 1;
+  border: 2px solid var(--lm-border);
+  border-radius: var(--lm-radius-sm);
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: all 0.2s;
+  max-height: 120px;
+  background: white;
+}
+
+#lm-input:focus {
+  border-color: var(--lm-primary);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+}
+
+#lm-input::placeholder {
+  color: var(--lm-text-muted);
+}
+
+.lm-send-btn {
+  background: linear-gradient(135deg, var(--lm-primary) 0%, var(--lm-primary-dark) 100%);
+  border: none;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--lm-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.lm-send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.lm-send-btn:active {
+  transform: scale(0.95);
+}
+
+/* Footer */
+.lm-footer {
+  padding: 12px 16px;
+  background: var(--lm-bg);
+  border-top: 1px solid var(--lm-border);
+  display: flex;
+  justify-content: center;
+}
+
+.lm-footer-btn {
+  background: white;
+  border: 2px solid var(--lm-border);
+  color: var(--lm-text-muted);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lm-footer-btn:hover {
+  background: var(--lm-primary-light);
+  border-color: var(--lm-primary);
+  color: var(--lm-primary-dark);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #lumina-sidebar {
+    --lm-bg: #1c1917;
+    --lm-bg-secondary: #292524;
+    --lm-text: #fef3c7;
+    --lm-text-muted: #a8a29e;
+    --lm-border: #44403c;
+    --lm-assistant-bubble: #292524;
+  }
+  
+  .lm-message-assistant .lm-bubble {
+    background: var(--lm-assistant-bubble);
+    color: var(--lm-text);
+    border-color: var(--lm-border);
+  }
+  
+  .lm-welcome-hint {
+    background: var(--lm-bg);
+    border-color: var(--lm-border);
+  }
+  
+  #lm-input {
+    background: var(--lm-bg-secondary);
+    color: var(--lm-text);
+  }
+  
+  .lm-footer-btn {
+    background: var(--lm-bg-secondary);
+    border-color: var(--lm-border);
+    color: var(--lm-text-muted);
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  #lumina-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}
