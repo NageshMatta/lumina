@@ -171,6 +171,7 @@ function addMessageToUI(role, content) {
   } else if (role === 'user') {
     messageDiv.innerHTML = `
       <div class="lm-bubble">${escapeHtml(content)}</div>
+      <div class="lm-avatar lm-avatar-user">👤</div>
     `;
   } else if (role === 'error') {
     messageDiv.innerHTML = `

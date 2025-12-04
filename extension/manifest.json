@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Lumina - AI Study Buddy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Your AI tutor that guides you to discover answers yourself. Lumina asks questions, never gives answers — because that's how real learning happens.",
   "permissions": [
     "activeTab",
