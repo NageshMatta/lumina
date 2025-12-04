@@ -19,13 +19,7 @@ function createSidebar() {
         </div>
         <button class="lm-close-btn" id="lm-close">×</button>
       </div>
-      
-      <div class="lm-context-banner" id="lm-context-banner" style="display: none;">
-        <span class="lm-context-label">Working on:</span>
-        <span class="lm-context-text" id="lm-context-text"></span>
-        <button class="lm-context-clear" id="lm-clear-context">×</button>
-      </div>
-      
+
       <div class="lm-messages" id="lm-messages">
         <div class="lm-welcome">
           <div class="lm-welcome-emoji">✨</div>
@@ -64,7 +58,6 @@ function createSidebar() {
   document.getElementById('lm-close').addEventListener('click', closeSidebar);
   document.getElementById('lm-send').addEventListener('click', sendMessage);
   document.getElementById('lm-new-chat').addEventListener('click', newChat);
-  document.getElementById('lm-clear-context').addEventListener('click', clearContext);
   
   const input = document.getElementById('lm-input');
   input.addEventListener('keydown', (e) => {
@@ -85,15 +78,23 @@ function openSidebar(context = '') {
   createSidebar();
   sidebar.classList.add('lm-open');
   isOpen = true;
-  
+
   if (context) {
     selectedContext = context;
-    const banner = document.getElementById('lm-context-banner');
-    const contextText = document.getElementById('lm-context-text');
-    contextText.textContent = context.length > 100 ? context.substring(0, 100) + '...' : context;
-    banner.style.display = 'flex';
+    // Show context as a card in the messages area
+    const messagesContainer = document.getElementById('lm-messages');
+    const welcome = messagesContainer.querySelector('.lm-welcome');
+    if (welcome) welcome.remove();
+
+    const contextCard = document.createElement('div');
+    contextCard.className = 'lm-context-card';
+    contextCard.innerHTML = `
+      <span class="lm-context-card-label">📝 Working on:</span>
+      <div class="lm-context-card-text">${escapeHtml(context)}</div>
+    `;
+    messagesContainer.appendChild(contextCard);
   }
-  
+
   document.getElementById('lm-input').focus();
 }
 
@@ -106,7 +107,6 @@ function closeSidebar() {
 
 function clearContext() {
   selectedContext = '';
-  document.getElementById('lm-context-banner').style.display = 'none';
 }
 
 async function sendMessage() {
