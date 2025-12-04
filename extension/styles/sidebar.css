@@ -210,10 +210,14 @@
 .lm-message-user {
   flex-direction: row-reverse;
   align-self: flex-end;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .lm-message-assistant {
   align-self: flex-start;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .lm-avatar {
@@ -237,9 +241,11 @@
 .lm-bubble {
   padding: 12px 16px;
   border-radius: var(--lm-radius-sm);
-  max-width: calc(100% - 46px);
+  max-width: 280px;
   word-wrap: break-word;
+  word-break: break-word;
   line-height: 1.6;
+  flex-shrink: 1;
 }
 
 .lm-message-user .lm-bubble {
