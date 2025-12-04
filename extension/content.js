@@ -1,4 +1,5 @@
 // Lumina Content Script - Injects sidebar into web pages
+// VERSION: 2.0 - Updated UI (No Banner)
 
 let sidebar = null;
 let isOpen = false;
