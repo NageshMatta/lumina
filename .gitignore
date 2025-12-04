@@ -25,6 +25,7 @@ build/
 
 # Extension package
 *.zip
+*.tar.gz
 *.crx
 *.pem
 

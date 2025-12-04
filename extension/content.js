@@ -1,4 +1,5 @@
 // Lumina Content Script - Injects sidebar into web pages
+// VERSION: 2.0 - Updated UI (No Banner)
 
 let sidebar = null;
 let isOpen = false;
@@ -170,6 +171,7 @@ function addMessageToUI(role, content) {
   } else if (role === 'user') {
     messageDiv.innerHTML = `
       <div class="lm-bubble">${escapeHtml(content)}</div>
+      <div class="lm-avatar lm-avatar-user">👤</div>
     `;
   } else if (role === 'error') {
     messageDiv.innerHTML = `
