@@ -251,14 +251,16 @@
 .lm-message-user .lm-bubble {
   background: linear-gradient(135deg, var(--lm-primary) 0%, var(--lm-primary-dark) 100%);
   color: white;
-  border-bottom-right-radius: 6px;
+  border-radius: var(--lm-radius-sm);
+  border-bottom-right-radius: 4px;
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
 }
 
 .lm-message-assistant .lm-bubble {
   background: white;
   color: var(--lm-text);
-  border-bottom-left-radius: 6px;
+  border-radius: var(--lm-radius-sm);
+  border-bottom-left-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--lm-border);
 }
