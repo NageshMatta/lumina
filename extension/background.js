@@ -2,7 +2,7 @@
 // Communicates with Lumina backend server
 
 // IMPORTANT: Update this URL after deploying your backend
-const API_BASE_URL = 'https://your-app.railway.app'; // Change this!
+const API_BASE_URL = 'https://lumina-production-80e0.up.railway.app'; // Change this!
 
 // Generate unique session ID for this browser session
 const sessionId = crypto.randomUUID();
