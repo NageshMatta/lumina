@@ -5,11 +5,11 @@
   --lm-primary-dark: #d97706;
   --lm-primary-light: #fef3c7;
   --lm-accent: #8b5cf6;
-  --lm-bg: #fffbeb;
-  --lm-bg-secondary: #fef9e7;
-  --lm-text: #1c1917;
-  --lm-text-muted: #78716c;
-  --lm-border: #fde68a;
+  --lm-bg: #1a1a1a;
+  --lm-bg-secondary: #1a1a1a;
+  --lm-text: #e5e5e5;
+  --lm-text-muted: #a8a8a8;
+  --lm-border: #333333;
   --lm-user-bubble: #f59e0b;
   --lm-assistant-bubble: #ffffff;
   --lm-shadow: 0 25px 50px -12px rgba(245, 158, 11, 0.25);
@@ -98,19 +98,19 @@
 
 /* Context Card - shown in chat instead of banner */
 .lm-context-card {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  background: rgba(245, 158, 11, 0.15);
   border: 2px solid var(--lm-primary);
   border-radius: var(--lm-radius);
   padding: 12px 16px;
   margin-bottom: 12px;
   font-size: 13px;
   line-height: 1.5;
-  color: #78350f;
+  color: var(--lm-primary);
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
 }
 
 .lm-context-card-label {
-  color: #92400e;
+  color: var(--lm-primary);
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
@@ -120,7 +120,7 @@
 }
 
 .lm-context-card-text {
-  color: #78350f;
+  color: var(--lm-text);
   word-wrap: break-word;
   white-space: pre-wrap;
   max-height: 100px;
@@ -179,7 +179,7 @@
 }
 
 .lm-welcome-hint {
-  background: white;
+  background: #2a2a2a;
   padding: 14px 18px;
   border-radius: var(--lm-radius);
   font-size: 12px;
@@ -249,21 +249,21 @@
 }
 
 .lm-message-user .lm-bubble {
-  background: white;
+  background: #2a2a2a;
   color: var(--lm-text);
   border-radius: var(--lm-radius-sm);
   border-bottom-right-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border: 2px solid var(--lm-primary);
 }
 
 .lm-message-assistant .lm-bubble {
-  background: white;
+  background: #2a2a2a;
   color: var(--lm-text);
   border-radius: var(--lm-radius-sm);
   border-bottom-left-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 2px solid #e7e5e4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid #3a3a3a;
 }
 
 .lm-bubble.lm-error {
@@ -316,7 +316,8 @@
   outline: none;
   transition: all 0.2s;
   max-height: 120px;
-  background: white;
+  background: #2a2a2a;
+  color: var(--lm-text);
 }
 
 #lm-input:focus {
@@ -363,7 +364,7 @@
 }
 
 .lm-footer-btn {
-  background: white;
+  background: #2a2a2a;
   border: 2px solid var(--lm-border);
   color: var(--lm-text-muted);
   padding: 10px 20px;
@@ -375,43 +376,9 @@
 }
 
 .lm-footer-btn:hover {
-  background: var(--lm-primary-light);
+  background: #3a3a3a;
   border-color: var(--lm-primary);
-  color: var(--lm-primary-dark);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  #lumina-sidebar {
-    --lm-bg: #1c1917;
-    --lm-bg-secondary: #292524;
-    --lm-text: #fef3c7;
-    --lm-text-muted: #a8a29e;
-    --lm-border: #44403c;
-    --lm-assistant-bubble: #292524;
-  }
-  
-  .lm-message-assistant .lm-bubble {
-    background: var(--lm-assistant-bubble);
-    color: var(--lm-text);
-    border-color: var(--lm-border);
-  }
-  
-  .lm-welcome-hint {
-    background: var(--lm-bg);
-    border-color: var(--lm-border);
-  }
-  
-  #lm-input {
-    background: var(--lm-bg-secondary);
-    color: var(--lm-text);
-  }
-  
-  .lm-footer-btn {
-    background: var(--lm-bg-secondary);
-    border-color: var(--lm-border);
-    color: var(--lm-text-muted);
-  }
+  color: var(--lm-primary);
 }
 
 /* Responsive */
