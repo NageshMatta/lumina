@@ -7,8 +7,20 @@ const API_BASE_URL = 'https://lumina-production-80e0.up.railway.app'; // Change 
 // TEST MODE: Set to true to use mock responses (no API calls)
 const TEST_MODE = true; // Change to false for production
 
-// Generate unique session ID for this browser session
-const sessionId = crypto.randomUUID();
+// Get or create persistent session ID
+let sessionId = null;
+
+// Initialize session ID from storage or create new one
+chrome.storage.local.get(['sessionId'], (result) => {
+  if (result.sessionId) {
+    sessionId = result.sessionId;
+    console.log('📝 Loaded existing session:', sessionId);
+  } else {
+    sessionId = crypto.randomUUID();
+    chrome.storage.local.set({ sessionId });
+    console.log('✨ Created new session:', sessionId);
+  }
+});
 
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -166,12 +178,13 @@ async function handleChat(request) {
 
 async function clearConversation() {
   const config = await getConfig();
-  
+
   if (!config.accessCode) {
     return { success: true };
   }
-  
+
   try {
+    // Clear conversation on server
     await fetch(`${config.apiUrl}/api/clear`, {
       method: 'POST',
       headers: {
@@ -180,10 +193,16 @@ async function clearConversation() {
       },
       body: JSON.stringify({ sessionId })
     });
+
+    // Create new session ID
+    sessionId = crypto.randomUUID();
+    await chrome.storage.local.set({ sessionId });
+    console.log('🔄 Started new session:', sessionId);
+
   } catch (error) {
     console.error('Clear error:', error);
   }
-  
+
   return { success: true };
 }
 
