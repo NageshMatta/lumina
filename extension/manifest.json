@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Lumina - AI Study Buddy",
   "version": "2.0.2",
-  "description": "Your AI tutor that guides you to discover answers yourself. Lumina asks questions, never gives answers — because that's how real learning happens.",
+  "description": "Your Socratic AI tutor that guides you to discover answers yourself through smart questions, not direct answers.",
   "permissions": [
     "activeTab",
     "storage",
