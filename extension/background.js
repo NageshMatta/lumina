@@ -5,7 +5,7 @@
 const API_BASE_URL = 'https://lumina-production-80e0.up.railway.app'; // Change this!
 
 // TEST MODE: Set to true to use mock responses (no API calls)
-const TEST_MODE = true; // Change to false for production
+const TEST_MODE = false; // Production mode - uses real API
 
 // Get or create persistent session ID
 let sessionId = null;
