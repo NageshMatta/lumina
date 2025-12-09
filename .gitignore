@@ -29,5 +29,8 @@ build/
 *.crx
 *.pem
 
+# Local testing
+extension-local-test/
+
 # OS files
 Thumbs.db
