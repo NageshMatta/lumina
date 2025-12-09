@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Lumina - AI Study Buddy",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Your Socratic AI tutor that guides you to discover answers yourself through smart questions, not direct answers.",
   "permissions": [
     "activeTab",
