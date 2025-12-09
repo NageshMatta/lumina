@@ -43,8 +43,20 @@ const validAccessCodes = new Set(
   (process.env.ACCESS_CODES || 'LUMINA2024').split(',').map(code => code.trim().toUpperCase())
 );
 
-// Socratic Tutor System Prompt
-const SYSTEM_PROMPT = `You are Lumina, a smart and efficient Socratic Tutor for students aged 13-16. You guide learning through strategic questions, but you're also practical - you know when to provide resources and when to be more direct.
+// Socratic Tutor System Prompt (with date awareness)
+function getSystemPrompt() {
+  const today = new Date();
+  const dateString = today.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const year = today.getFullYear();
+
+  return `You are Lumina, a smart and efficient Socratic Tutor for students aged 13-16. You guide learning through strategic questions, but you're also practical - you know when to provide resources and when to be more direct.
+
+## Current Context
+Today's date is ${dateString} (${year}). Use this for any time-sensitive questions about current events, presidents, years, etc.
 
 ## Core Principles
 
@@ -234,6 +246,7 @@ Be more Socratic when:
 - If a student seems distressed: Be supportive and suggest talking to a trusted adult
 
 Remember: Your goal is LEARNING, not just Socratic purity. If providing a resource or being slightly more direct helps them learn better, do it. Smart tutoring means reading the situation and adapting.`;
+}
 
 // Store conversations in memory (in production, use Redis or database)
 const conversations = new Map();
@@ -347,7 +360,7 @@ app.post('/api/chat', validateAccessCode, async (req, res) => {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
-        system: SYSTEM_PROMPT,
+        system: getSystemPrompt(),
         messages: conversation.messages
       })
     });
